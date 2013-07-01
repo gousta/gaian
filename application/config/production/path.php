@@ -26,7 +26,7 @@ return array(
 
 	'avatar' => array(
 		'path' => '/home/gaian/domains/gaian.eu/public_html/files/avatar/',
-		'url' => 'http://gaian.eu/files/avatar/'
+		'url' => 'http://www.gaian.eu/files/avatar/'
 	)
-	
+
 );
