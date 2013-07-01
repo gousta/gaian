@@ -11,7 +11,7 @@ return array(
 	|
 	*/
 	'media' => array(
-	    'path' => '/home/gaian/domains/gaian.eu/gaian/public/files/media/' //new path
+	    'path' => '/home/gaian/domains/gaian.eu/gaian/public/files/media/', //new path
 		//'path' => '/home/gaian/domains/gaian.eu/public_html/files/media/', //old path
 		'url' => 'http://www.gaian.eu/files/media/'
 	),
