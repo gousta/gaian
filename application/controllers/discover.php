@@ -115,7 +115,7 @@ class Discover_Controller extends Base_Controller {
 			}
 		}
 
-		return Redirect::to('discover/'.$contID);
+		return Redirect::to('discover/'.$category.'/'.$contID);
 	}
 
 	public function post_contribution_edit($category, $contID)
@@ -130,7 +130,7 @@ class Discover_Controller extends Base_Controller {
 
 				if ($validation->fails())
 				{
-				  return Redirect::to('discover/'.$contID.'/edit')->with_errors($validation);
+				  return Redirect::to('discover/'.$category.'/'.$contID.'/edit')->with_errors($validation);
 				} else {
 					DB::table('contributions')->where('id', '=', $contID)->update(Input::all());
 					return Redirect::to('discover/'.$contID)->with('success', 'Changes were saved successfully.');
@@ -138,7 +138,7 @@ class Discover_Controller extends Base_Controller {
 			}
 		}
 
-		return Redirect::to('discover/'.$contID);
+		return Redirect::to('discover/'.$category.'/'.$contID);
 	}
 
 	public function get_contribution_delete($category, $contID)
@@ -168,16 +168,16 @@ class Discover_Controller extends Base_Controller {
 	{
 		if(Auth::check())
 		{
-				$data['user'] = Auth::user();
-				$data['comment'] = DB::table('comments')->where('id', '=', $commentID)->first();
+			$data['user'] = Auth::user();
+			$data['comment'] = DB::table('comments')->where('id', '=', $commentID)->first();
 
-				if($data['user']->id == $data['comment']->author)
-				{
-					DB::table('comments')->where('id', '=', $commentID)->delete();
-				}
+			if($data['user']->id == $data['comment']->author)
+			{
+				DB::table('comments')->where('id', '=', $commentID)->delete();
+			}
 		}
 
-		return Redirect::to('discover/'.$contID);
+		return Redirect::to('discover/'.$category.'/'.$contID);
 	}
 
 }
