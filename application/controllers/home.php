@@ -33,17 +33,17 @@ class Home_Controller extends Base_Controller {
 	public function action_index()
 	{
 		$data['homepage'] = true;
-		$data['title'] = 'Welcome to Gaian.me';
-		
+		$data['title'] = 'Welcome to the Gaian Community';
+
 		$data['celebrated'] = DB::table('contributions')
 		->where('featured', '=', 1)
 		->order_by('timestamp', 'desc')
 		->join('passports', 'contributions.author', '=', 'passports.id')
 		->get(array('contributions.id', 'contributions.title', 'contributions.preview', 'passports.username', 'passports.first_name', 'passports.last_name'));
-		
-		
+
+
 		$data['feed'] = DB::table('feed_instagram')->order_by('timestamp', 'desc')->take(9)->get(); // change the number on 18, when it will be more images ;)
-		
+
 		return View::make('home', $data);
 	}
 
